@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev libpq-dev \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_pgsql \
-    && docker-php-ext-install xdebug \
     ## APCu
     && pecl install apcu-5.1.3 \
     && docker-php-ext-enable apcu \
+    && pecl install xdebug-2.3.3
