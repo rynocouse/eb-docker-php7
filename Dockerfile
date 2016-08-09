@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev libpq-dev nano \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-install gd \
     ## APCu
     && pecl install apcu-5.1.3 \
     && docker-php-ext-enable apcu
@@ -25,4 +26,4 @@ ENV LARAVEL_WWW_PATH=/var/www/html \
     LARAVEL_BOOTSTRAP_CACHE_PATH=/var/www/html/bootstrap/cache \
     TERM=xterm
 
-CMD sh /tmp/php-app/setup.sh
+CMD sh /var/www/html/ebconfig/bin/setup.sh

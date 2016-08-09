@@ -24,7 +24,12 @@ mkdir -p ${LARAVEL_BOOTSTRAP_CACHE_PATH}
 #chown -R www-data ${LARAVEL_BOOTSTRAP_CACHE_PATH}
 chmod -R 777 ${LARAVEL_BOOTSTRAP_CACHE_PATH}
 
+echo "-----------------------"
+echo "Migrate"
+echo "-----------------------"
 
+[ -f /etc/hosts ] && echo "Found" || echo "Not found"
+php artisan migrate
 
 echo "-----------------------"
 echo "Starting PHP FPM"
