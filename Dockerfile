@@ -2,13 +2,14 @@ FROM php:7.0.6-fpm
 
 COPY config/custom.ini /usr/local/etc/php/conf.d/
 
-RUN apt-get update && apt-get install -y zlib1g-dev libexif-dev libicu-dev libpng-dev libjpeg-dev libpq-dev nano \
+RUN apt-get update && apt-get install -y zlib1g-dev libexif-dev libicu-dev libpng-dev libjpeg62-turbo-dev libjpeg-dev libpq-dev nano \
     && docker-php-ext-install opcache \
     && docker-php-ext-install intl \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-ext-install exif \
+    && docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
     && docker-php-ext-install gd \
     ## APCu
     && pecl install apcu-5.1.3 \
